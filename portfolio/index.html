@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Andres Young | Frontend Developer</title>
+  <meta name="description" content="Andres Young is a frontend developer building real projects with HTML, CSS, JavaScript, and React.">
+  <link rel="stylesheet" href="styles.css">
+  <script src="index.js" defer></script>
+</head>
+<body>
+  <!-- Background code rain effect -->
+  <canvas class="code-rain" aria-hidden="true"></canvas>
+
+  <!-- Header / navigation -->
+  <header class="site-header">
+    <a class="logo" href="#top" aria-label="Andres Young home">dre</a>
+
+    <nav class="site-nav" aria-label="Main navigation">
+      <ul>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#journey">Journey</a></li>
+        <li><a href="#skills">Skills</a></li>
+        
+      </ul>
+    </nav>
+
+    <a class="nav-cta" href="#contact">Contact</a>
+  </header>
+
+  <main id="top">
+    <!-- Hero section -->
+    <section id="hero" class="hero">
+      <div class="hero-content">
+        <h1>Andres Young</h1>
+        <h2>Frontend Developer</h2>
+        <p>
+       I’m a 21-year-old aspiring frontend developer, father, and fiancé, working hard to build a better future through tech. 
+       I’m looking to contribute to meaningful team projects and as I continue developing my skills through personal projects.
+        </p>
+
+        <div class="hero-actions">
+          <a class="projects-button" href="#projects">View My Projects<span aria-hidden="true"></span></a>
+          <a class="github-button" href="https://github.com/frvrdre" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+        </div>
+      </div>
+
+      <div class="hero-panel" aria-label="Code preview">
+        <div class="panel-top">
+          <span></span>
+          <span></span>
+          <span></span>
+          <p>Hero.jsx</p>
+        </div>
+        <pre><code>export default function Hero() {
+  return (
+    &lt;section className="hero"&gt;
+      &lt;h1&gt;Andres Young&lt;/h1&gt;
+      &lt;p&gt;Frontend Developer&lt;/p&gt;
+      &lt;div className="actions"&gt;
+        &lt;a href="#projects"&gt;View Projects&lt;/a&gt;
+        &lt;a href="https://github.com/frvrdre"&gt;
+          View on GitHub
+        &lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+  )
+}</code></pre>
+      </div>
+    </section>
+
+    <!-- Projects section -->
+    <section id="projects" class="projects">
+      <div class="section-header">
+        <h2>Selected Projects</h2>
+        <a href="https://github.com/frvrdre?tab=repositories" target="_blank">View all projects <span aria-hidden="true">-></span></a>
+      </div>
+
+      <ul class="project-list">
+        <li class="project-card">
+          <img class="project-image" src="assets/textchanger.png" alt="Screenshot of Text Changer project">
+          <div class="project-copy">
+            <h3 class="project-title">Text Changer</h3>
+            <p class="project-description">A simple web application that allows users to change the text content of a webpage in real time.</p>
+            <ul class="project-tags" aria-label="Technologies used">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+            </ul>
+            <a class="project-link" href="https://text-changer-phi.vercel.app/" target="_blank" rel="noopener noreferrer">View Project -></a>
+          </div>
+        </li>
+
+        <li class="project-card">
+          <img class="project-image" src="assets/archive.png" alt="Screenshot of Archive.dev project">
+          <div class="project-copy">
+            <h3 class="project-title">Archive.dev</h3>
+            <p class="project-description">Modern personal portfolio built with Next.js, Tailwind CSS, and a custom music player.</p>
+            <ul class="project-tags" aria-label="Technologies used">
+              <li>Next.js</li>
+              <li>Tailwind CSS</li>
+            </ul>
+            <a class="project-link" href="https://archive-dev-chi.vercel.app/" target="_blank" rel="noopener noreferrer">View Project -></a>
+          </div>
+        </li>
+
+        <li class="project-card">
+          <img class="project-image" src="assets/banksrl.png" alt="Screenshot of Content Creator's portfolio project">
+          <div class="project-copy">
+            <h3 class="project-title">Content Creator's Portfolio</h3>
+            <p class="project-description">A personal page for a content creator, focused on clean structure, visual presentation, and responsive layout.</p>
+            <ul class="project-tags" aria-label="Technologies used">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+            </ul>
+            <a class="project-link" href="https://banksrl.co.uk/" target="_blank" rel="noopener noreferrer">View Project -></a>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Journey and skills section -->
+    <div class="learning-grid">
+      <section id="journey" class="journey">
+        <h2>My Learning Journey</h2>
+        <ol class="journey-list">
+          <li>
+            <span>2024</span>
+            <strong>Started the Journey</strong>
+            <p>Began learning HTML, CSS, and JavaScript with the goal of becoming a frontend developer.</p>
+          </li>
+          <li>
+            <span>2025</span>
+            <strong>Building & Practicing</strong>
+            <p>Built real projects, practiced daily, and explored responsive design and modern JavaScript.</p>
+          </li>
+          <li>
+            <span>2026</span>
+            <strong>Leveling Up</strong>
+            <p>Deepening my skills, improving my portfolio, and preparing for frontend opportunities.</p>
+          </li>
+        </ol>
+      </section>
+
+      <section id="skills" class="skills">
+        <h2>Skills</h2>
+        <ul class="skill-list">
+          <li>
+            <img src="assets/icons/html.svg" alt="">
+            <span>HTML</span>
+          </li>
+          <li>
+            <img src="assets/icons/css.svg" alt="">
+            <span>CSS</span>
+          </li>
+          <li>
+            <img src="assets/icons/javascript.svg" alt="">
+            <span>JavaScript</span>
+          </li>
+          <li>
+            <img src="assets/icons/react.svg" alt="">
+            <span>React</span>
+          </li>
+          <li>
+            <img src="assets/icons/github.png" alt="">
+            <span>GitHub</span>
+          </li>
+          <li>
+            <img src="assets/icons/learn.svg" alt="">
+            <span>More Coming Soon...</span>
+          </li>
+        </ul>
+      </section>
+    </div>
+
+    <!-- Contact section -->
+    <section id="contact" class="contact">
+      <div>
+        <h2>Let's Connect</h2>
+        <p>I'm open to remote-friendly frontend roles and all exciting new opportunities.</p>
+      </div>
+
+      <ul class="contact-list">
+        <li>
+          <a href="https://www.linkedin.com/in/andresyoung" target="_blank" rel="noopener noreferrer">
+            <img class="contact-icon" src="assets/icons/linkedin.svg" alt="">
+            linkedin.com/in/andresyoung
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/frvrdre" target="_blank" rel="noopener noreferrer">
+            <img class="contact-icon" src="assets/icons/github.png" alt="">
+            github.com/frvrdre
+          </a>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Andres Young. All rights reserved.</p>
+  </footer>
+</body>
+</html>

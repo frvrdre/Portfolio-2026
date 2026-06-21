@@ -1,54 +1,24 @@
-# Dre's Portfolio
+# Andres Young Portfolio 2026
 
-This is my personal portfolio website, built to show the projects I’m working on and the progress I’m making as I learn frontend development.
+A personal frontend developer portfolio built with plain HTML, CSS, and JavaScript.
 
-## About Me
+## What This Project Uses
 
-I’m Dre, a 21-year-old aspiring frontend developer, father, and fiancé.
+- HTML for page structure and content
+- CSS for layout, colors, spacing, responsiveness, and visual design
+- JavaScript for the interactive code rain canvas background
 
-I’m working hard to build a better future through tech. I enjoy creating clean, responsive websites and learning how to turn ideas into something real on the screen.
+## File Structure
 
-Right now, I’m focused on improving my frontend skills, building solo projects, and looking for opportunities where I can contribute to meaningful work, learn from experienced developers, and grow as part of a team.
+```text
+portfolio/
+  index.html
+  styles.css
+  index.js
+  assets/
+    icons/
+```
 
-## Live Site
+## Notes
 
-Live site: [frvrdre.xyz](http://frvrdre.xyz/)
-
-## What’s Included
-
-This portfolio includes:
-
-- A short introduction about me
-- A showcase of my projects
-- My current skills and tools
-- Links to my GitHub and socials
-- A responsive design for mobile, tablet, and desktop
-
-## Projects
-
-Some of the projects featured in this portfolio include:
-
-### Dev Archive
-
-A developer-focused project where I’m collecting useful tools, resources, and ideas as I continue learning.
-
-### Banks RL Website
-
-A creator-style landing page built around clips, edits, and community content.
-
-### Text Changer App
-
-A small JavaScript project that helped me practise DOM manipulation, events, and updating content on the page.
-
-I’ll keep adding more projects as I build and improve.
-
-## Tech I’m Using
-
-This project uses:
-
-- HTML
-- CSS
-- JavaScript
-- Git and GitHub
-- Vercel
-
+This project is intentionally kept framework-free while I build strong frontend fundamentals.

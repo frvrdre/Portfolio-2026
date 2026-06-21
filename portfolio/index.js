@@ -1,173 +1,178 @@
-// Grab the canvas and set up the drawing tool.
-const canvas = document.querySelector(".code-rain");
-const ctx = canvas.getContext("2d");
-const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+(() => {
+  // Canvas setup
+  const canvas = document.querySelector(".code-rain");
 
-// Small code-looking characters for the rain.
-const codeCharacters = ["0", "1", "{", "}", "<", ">", "/", "=", ";", "(", ")", "const", "let"];
-const fontSize = 18;
-const frameDelay = 55;
-const mouseRadius = 120;
-
-// These values change while the animation runs.
-let columns = 0;
-let drops = [];
-let burstSymbols = [];
-let animationId;
-let lastDrawTime = 0;
-
-// The mouse starts as null until the user moves it.
-let mouse = {
-  x: null,
-  y: null,
-};
-
-// Keep the canvas sharp and full screen.
-function resizeCanvas() {
-  const pixelRatio = Math.min(window.devicePixelRatio, 2);
-
-  canvas.width = window.innerWidth * pixelRatio;
-  canvas.height = window.innerHeight * pixelRatio;
-  canvas.style.width = `${window.innerWidth}px`;
-  canvas.style.height = `${window.innerHeight}px`;
-
-  ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
-
-  columns = Math.floor(window.innerWidth / fontSize);
-  drops = Array.from({ length: columns }, () => Math.random() * window.innerHeight);
-}
-
-// Pick one random symbol from the list.
-function getRandomCharacter() {
-  const randomIndex = Math.floor(Math.random() * codeCharacters.length);
-
-  return codeCharacters[randomIndex];
-}
-
-// Measure how far two points are from each other.
-function getDistance(x1, y1, x2, y2) {
-  const distanceX = x1 - x2;
-  const distanceY = y1 - y2;
-
-  return Math.sqrt(distanceX * distanceX + distanceY * distanceY);
-}
-
-// Make a small burst of symbols when the user clicks.
-function createClickBurst(x, y) {
-  const newSymbols = Array.from({ length: 18 }, () => ({
-    x,
-    y,
-    text: getRandomCharacter(),
-    opacity: 1,
-    size: Math.random() * 8 + 14,
-    velocityX: (Math.random() - 0.5) * 5,
-    velocityY: (Math.random() - 0.5) * 5,
-  }));
-
-  burstSymbols = [...burstSymbols, ...newSymbols];
-}
-
-// Draw click symbols, move them, and fade them out.
-function drawBurstSymbols() {
-  burstSymbols = burstSymbols.filter((symbol) => symbol.opacity > 0);
-
-  burstSymbols.forEach((symbol) => {
-    ctx.fillStyle = `rgba(248, 250, 252, ${symbol.opacity})`;
-    ctx.font = `${symbol.size}px monospace`;
-    ctx.fillText(symbol.text, symbol.x, symbol.y);
-
-    symbol.x += symbol.velocityX;
-    symbol.y += symbol.velocityY;
-    symbol.opacity -= 0.03;
-  });
-}
-
-// Main animation loop for the code rain.
-function drawCodeRain(timestamp = 0) {
-  if (timestamp - lastDrawTime < frameDelay) {
-    animationId = requestAnimationFrame(drawCodeRain);
+  if (!canvas) {
     return;
   }
 
-  lastDrawTime = timestamp;
+  const ctx = canvas.getContext("2d");
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-  ctx.fillStyle = "rgba(67, 31, 80, 0.16)";
-  ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+  if (!ctx) {
+    return;
+  }
 
-  drops.forEach((dropY, index) => {
-    const text = getRandomCharacter();
-    const x = index * fontSize;
-    const mouseIsNearby =
-      mouse.x !== null && getDistance(mouse.x, mouse.y, x, dropY) < mouseRadius;
+  // Code rain settings
+  const characters = ["0", "1", "{", "}", "<", ">", "/", "=", ";", "(", ")", "const", "let"];
+  const fontSize = 18;
+  const frameDelay = 55;
+  const mouseRadius = 120;
 
-    ctx.fillStyle = mouseIsNearby
-      ? "rgba(255, 255, 255, 0.95)"
-      : "rgba(248, 250, 252, 0.45)";
+  // Animation state
+  let columns = 0;
+  let drops = [];
+  let bursts = [];
+  let animationId = null;
+  let lastDrawTime = 0;
 
-    ctx.font = mouseIsNearby
-      ? `${fontSize + 4}px monospace`
-      : `${fontSize}px monospace`;
+  const mouse = {
+    x: null,
+    y: null,
+  };
 
-    ctx.fillText(text, x, dropY);
+  // Resize the canvas so it stays sharp on different screens
+  function resizeCanvas() {
+    const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
 
-    if (dropY > window.innerHeight && Math.random() > 0.975) {
-      drops[index] = 0;
+    canvas.width = window.innerWidth * pixelRatio;
+    canvas.height = window.innerHeight * pixelRatio;
+    canvas.style.width = `${window.innerWidth}px`;
+    canvas.style.height = `${window.innerHeight}px`;
+
+    ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+
+    columns = Math.floor(window.innerWidth / fontSize);
+    drops = Array.from({ length: columns }, () => Math.random() * window.innerHeight);
+  }
+
+  // Choose a random code character
+  function getRandomCharacter() {
+    const randomIndex = Math.floor(Math.random() * characters.length);
+
+    return characters[randomIndex];
+  }
+
+  // Measure the distance between two points
+  function getDistance(x1, y1, x2, y2) {
+    const distanceX = x1 - x2;
+    const distanceY = y1 - y2;
+
+    return Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+  }
+
+  // Create a small code burst when the user clicks
+  function createBurst(x, y) {
+    const newBursts = Array.from({ length: 18 }, () => ({
+      x,
+      y,
+      text: getRandomCharacter(),
+      opacity: 1,
+      size: Math.random() * 8 + 14,
+      velocityX: (Math.random() - 0.5) * 5,
+      velocityY: (Math.random() - 0.5) * 5,
+    }));
+
+    bursts = [...bursts, ...newBursts];
+  }
+
+  // Draw the click burst symbols
+  function drawBursts() {
+    bursts = bursts.filter((burst) => burst.opacity > 0);
+
+    bursts.forEach((burst) => {
+      ctx.fillStyle = `rgba(248, 250, 252, ${burst.opacity})`;
+      ctx.font = `${burst.size}px monospace`;
+      ctx.fillText(burst.text, burst.x, burst.y);
+
+      burst.x += burst.velocityX;
+      burst.y += burst.velocityY;
+      burst.opacity -= 0.03;
+    });
+  }
+
+  // Draw one frame of the rain animation
+  function drawRain(timestamp = 0) {
+    if (timestamp - lastDrawTime < frameDelay) {
+      animationId = requestAnimationFrame(drawRain);
+      return;
+    }
+
+    lastDrawTime = timestamp;
+
+    ctx.fillStyle = "rgba(67, 31, 80, 0.16)";
+    ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+
+    drops.forEach((dropY, index) => {
+      const x = index * fontSize;
+      const isNearMouse =
+        mouse.x !== null && getDistance(mouse.x, mouse.y, x, dropY) < mouseRadius;
+
+      ctx.fillStyle = isNearMouse
+        ? "rgba(255, 255, 255, 0.95)"
+        : "rgba(248, 250, 252, 0.45)";
+
+      ctx.font = isNearMouse
+        ? `${fontSize + 4}px monospace`
+        : `${fontSize}px monospace`;
+
+      ctx.fillText(getRandomCharacter(), x, dropY);
+
+      if (dropY > window.innerHeight && Math.random() > 0.975) {
+        drops[index] = 0;
+      } else {
+        drops[index] = dropY + fontSize;
+      }
+    });
+
+    drawBursts();
+    animationId = requestAnimationFrame(drawRain);
+  }
+
+  // Stop the animation cleanly
+  function stopRain() {
+    if (animationId) {
+      cancelAnimationFrame(animationId);
+    }
+
+    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+  }
+
+  // Start the animation cleanly
+  function startRain() {
+    stopRain();
+    lastDrawTime = 0;
+    resizeCanvas();
+    drawRain();
+  }
+
+  // Browser events
+  window.addEventListener("resize", resizeCanvas);
+
+  window.addEventListener("mousemove", (event) => {
+    mouse.x = event.clientX;
+    mouse.y = event.clientY;
+  });
+
+  window.addEventListener("mouseleave", () => {
+    mouse.x = null;
+    mouse.y = null;
+  });
+
+  window.addEventListener("click", (event) => {
+    createBurst(event.clientX, event.clientY);
+  });
+
+  reducedMotion.addEventListener("change", (event) => {
+    if (event.matches) {
+      stopRain();
     } else {
-      drops[index] = dropY + fontSize;
+      startRain();
     }
   });
 
-  drawBurstSymbols();
-
-  animationId = requestAnimationFrame(drawCodeRain);
-}
-
-// Start the effect unless the user prefers less motion.
-function startCodeRain() {
-  if (prefersReducedMotion.matches) {
-    return;
+  // Start the effect
+  if (!reducedMotion.matches) {
+    startRain();
   }
-
-  cancelAnimationFrame(animationId);
-  lastDrawTime = 0;
-  resizeCanvas();
-  drawCodeRain();
-}
-
-// Stop the effect and clear the canvas.
-function stopCodeRain() {
-  cancelAnimationFrame(animationId);
-  ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-}
-
-// Keep the animation fitting the screen.
-window.addEventListener("resize", resizeCanvas);
-
-// Save the latest mouse position for the glow effect.
-window.addEventListener("mousemove", (event) => {
-  mouse.x = event.clientX;
-  mouse.y = event.clientY;
-});
-
-// Remove the hover effect when the mouse leaves the page.
-window.addEventListener("mouseleave", () => {
-  mouse.x = null;
-  mouse.y = null;
-});
-
-// Add an interactive burst wherever the user clicks.
-window.addEventListener("click", (event) => {
-  createClickBurst(event.clientX, event.clientY);
-});
-
-// React if the user changes their motion preference.
-prefersReducedMotion.addEventListener("change", () => {
-  if (prefersReducedMotion.matches) {
-    stopCodeRain();
-  } else {
-    startCodeRain();
-  }
-});
-
-// Run the animation.
-startCodeRain();
+})();

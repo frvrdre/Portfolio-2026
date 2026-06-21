@@ -13,6 +13,11 @@
   --color-secondary: #5f2c74;
   --color-accent: #865ea0;
   --color-border: #b67bce;
+  --color-button-text: #14071c;
+  --color-tag-bg: rgba(151, 72, 185, 0.14);
+  --color-tag-border: rgba(182, 123, 206, 0.36);
+  --content-width: 1120px;
+  --page-padding: 40px;
   --skill-icon-size: 42px;
   --contact-icon-size: 24px;
 }
@@ -75,7 +80,7 @@ main > section,
 .site-footer {
   position: relative;
   z-index: 1;
-  width: min(100% - 40px, 1120px);
+  width: min(100% - var(--page-padding), var(--content-width));
   margin-inline: auto;
 }
 
@@ -92,7 +97,7 @@ main > section,
 .logo {
   margin-right: auto;
   color: transparent;
-  background:  var(--color-primary);
+  background: var(--color-primary);
   -webkit-background-clip: text;
   background-clip: text;
   font-size: 1.8rem;
@@ -132,8 +137,8 @@ main > section,
 
 .nav-cta,
 .projects-button {
- background:  var(--color-primary);
-  color: #07101c;
+  background: var(--color-primary);
+  color: var(--color-button-text);
 }
 
 .github-button {
@@ -310,9 +315,9 @@ main > section,
 
 .project-tags li {
   padding: 4px 9px;
-  border: 1px solid rgba(143, 243, 247, 0.24);
+  border: 1px solid var(--color-tag-border);
   border-radius: 999px;
-  background: rgba(143, 243, 247, 0.07);
+  background: var(--color-tag-bg);
   color: var(--color-muted);
   font-size: 0.78rem;
 }
@@ -476,6 +481,10 @@ a:focus-visible {
 
 /* Mobile layout */
 @media (max-width: 720px) {
+  :root {
+    --page-padding: 32px;
+  }
+
   .site-header {
     flex-wrap: wrap;
   }
@@ -504,5 +513,16 @@ a:focus-visible {
 
   .skill-list {
     grid-template-columns: repeat(2, minmax(72px, 1fr));
+  }
+}
+
+/* Respect people who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .code-rain {
+    display: none;
   }
 }

@@ -121,7 +121,8 @@ main > section,
 .project-link:hover,
 .contact-list a:hover,
 .projects-button:hover,
-.nav-cta:hover, .github-button:hover  {
+.nav-cta:hover, .github-button:hover,
+.all-proj:hover {
  color: var(--color-muted);
  transform: translateY(-2px); 
  

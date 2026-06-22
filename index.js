@@ -14,10 +14,10 @@
   }
 
   // Code rain settings
-  const characters = ["0", "1", "{", "}", "<", ">", "/", "=", ";", "(", ")", "const", "let"];
-  const fontSize = 18;
-  const frameDelay = 55;
-  const mouseRadius = 120;
+  const characters = ["0", "1", "7", "{", "}", "<", ">", "/", "=", ";", "(", ")", "const", "shan"];
+  const fontSize = 15;
+  const frameDelay = 45;
+  const mouseRadius = 200;
 
   // Animation state
   let columns = 0;
@@ -61,22 +61,9 @@
     return Math.sqrt(distanceX * distanceX + distanceY * distanceY);
   }
 
-  // Create a small code burst when the user clicks
-  function createBurst(x, y) {
-    const newBursts = Array.from({ length: 18 }, () => ({
-      x,
-      y,
-      text: getRandomCharacter(),
-      opacity: 1,
-      size: Math.random() * 8 + 14,
-      velocityX: (Math.random() - 0.5) * 5,
-      velocityY: (Math.random() - 0.5) * 5,
-    }));
 
-    bursts = [...bursts, ...newBursts];
-  }
 
-  // Draw the click burst symbols
+  // Draw the symbols
   function drawBursts() {
     bursts = bursts.filter((burst) => burst.opacity > 0);
 

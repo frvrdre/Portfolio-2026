@@ -1,6 +1,6 @@
 # Andres Young Portfolio 2026
 
-A personal frontend developer portfolio built with plain HTML, CSS, and JavaScript.
+This is a personal portfolio I have built with plain HTML, CSS, and JavaScript. I will be updating it and tweaking everything as I learn more in front-end development.
 
 ## What This Project Uses
 

@@ -122,7 +122,7 @@ main > section,
 .contact-list a:hover,
 .projects-button:hover,
 .nav-cta:hover, .github-button:hover,
-.all-proj:hover {
+.all-proj a:hover {
  color: var(--color-muted);
  transform: translateY(-2px); 
  

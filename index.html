@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="styles.css">
   <script src="index.js" defer></script>
 </head>
+
 <body>
   <!-- Decorative canvas background controlled by JavaScript -->
   <canvas class="code-rain" aria-hidden="true"></canvas>
@@ -33,6 +34,7 @@
       <div class="hero-content">
         <h1>Andres Young</h1>
         <h2>Frontend Developer</h2>
+
         <p>
           I'm a 21-year-old aspiring frontend developer, father, and fiance,
           working hard to build a better future through tech. I'm looking to
@@ -42,7 +44,9 @@
 
         <div class="hero-actions">
           <a class="projects-button" href="#projects">View My Projects</a>
-          <a class="github-button" href="https://github.com/frvrdre" target="_blank" rel="noopener noreferrer">View on GitHub</a>
+          <a class="github-button" href="https://github.com/frvrdre" target="_blank" rel="noopener noreferrer">
+            View on GitHub
+          </a>
         </div>
       </div>
 
@@ -53,6 +57,7 @@
           <span></span>
           <p>Hero.jsx</p>
         </div>
+
         <pre><code>export default function Hero() {
   return (
     &lt;section className="hero"&gt;
@@ -74,49 +79,77 @@
     <section id="projects" class="projects">
       <div class="section-header">
         <h2>Selected Projects</h2>
-        <a class="all-proj" href="https://github.com/frvrdre?tab=repositories" target="_blank" rel="noopener noreferrer">View all projects <span aria-hidden="true"></span></a>
+
+      
       </div>
 
       <ul class="project-list">
-        <li class="project-card">
-          <img class="project-image" src="assets/textchanger.png" alt="Screenshot of Text Changer project">
-          <div class="project-copy">
-            <h3 class="project-title">Text Changer</h3>
-            <p class="project-description">A simple web application that allows users to change the text content of a webpage in real time.</p>
-            <ul class="project-tags" aria-label="Technologies used">
-              <li>HTML</li>
-              <li>CSS</li>
-              <li>JavaScript</li>
-            </ul>
-            <a class="project-link" href="https://text-changer-phi.vercel.app/" target="_blank" rel="noopener noreferrer">View Project ➜</a>
-          </div>
+        <li>
+          <a class="project-card" href="https://text-changer-phi.vercel.app/" target="_blank" rel="noopener noreferrer">
+            <img class="project-image" src="assets/textchanger.png" alt="Screenshot of Text Changer project">
+
+            <div class="project-copy">
+              <h3 class="project-title">Text Changer</h3>
+
+              <ul class="project-tags" aria-label="Technologies used">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+              </ul>
+
+              <p class="project-description">
+                A simple web application that when the button is clicked it using DOM to change the text displayed which my fiance helped me pink the color.
+              </p>
+
+              <p class="project-link-text"></p>
+            </div>
+          </a>
         </li>
 
-        <li class="project-card">
-          <img class="project-image" src="assets/archive.png" alt="Screenshot of Archive.dev project">
-          <div class="project-copy">
-            <h3 class="project-title">Archive.dev</h3>
-            <p class="project-description">Modern personal portfolio built with Next.js, Tailwind CSS, and a custom music player.</p>
-            <ul class="project-tags" aria-label="Technologies used">
-              <li>Next.js</li>
-              <li>Tailwind CSS</li>
-            </ul>
-            <a class="project-link" href="https://archive-dev-chi.vercel.app/" target="_blank" rel="noopener noreferrer">View Project ➜</a>
-          </div>
+        <li>
+          <a class="project-card" href="https://archive-dev-chi.vercel.app/" target="_blank" rel="noopener noreferrer">
+            <img class="project-image" src="assets/archive.png" alt="Screenshot of Archive.dev project">
+
+            <div class="project-copy">
+              <h3 class="project-title">Developer Archive</h3>
+
+              <ul class="project-tags" aria-label="Technologies used">
+                <li>NEXT.JS</li>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+              </ul>
+
+              <p class="project-description">
+                A website to store all the tools I have found that can be used for development and which I will continue to update it overtime, it also has a music player with a couple songs I like.
+              </p>
+
+              <p class="project-link-text"></p>
+            </div>
+          </a>
         </li>
 
-        <li class="project-card">
-          <img class="project-image" src="assets/banksrl.png" alt="Screenshot of Content Creator's Portfolio project">
-          <div class="project-copy">
-            <h3 class="project-title">Content Creator's Portfolio</h3>
-            <p class="project-description">A personal page for a content creator, focused on clean structure, visual presentation, and responsive layout.</p>
-            <ul class="project-tags" aria-label="Technologies used">
-              <li>HTML</li>
-              <li>CSS</li>
-              <li>JavaScript</li>
-            </ul>
-            <a class="project-link" href="https://banksrl.co.uk/" target="_blank" rel="noopener noreferrer">View Project ➜</a>
-          </div>
+        <li>
+          <a class="project-card" href="https://banksrl.co.uk/" target="_blank" rel="noopener noreferrer">
+            <img class="project-image" src="assets/banksrl.png" alt="Screenshot of Content Creator's Portfolio project">
+
+            <div class="project-copy">
+              <h3 class="project-title">Streamer Portfolio</h3>
+
+              <ul class="project-tags" aria-label="Technologies used">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+
+              </ul>
+              <p class="project-description">
+                This website was made a small content creator who wanted to have a different way to display some of their content and find out who they are.
+              </p>
+
+
+              <p class="project-link-text"></p>
+            </div>
+          </a>
         </li>
       </ul>
     </section>
@@ -125,17 +158,20 @@
     <div class="learning-grid">
       <section id="journey" class="journey">
         <h2>My Learning Journey</h2>
+
         <ol class="journey-list">
           <li>
             <span>2024</span>
             <strong>Started the Journey</strong>
             <p>Began learning HTML, CSS, and JavaScript with the goal of becoming a frontend developer.</p>
           </li>
+
           <li>
             <span>2025</span>
             <strong>Building & Practicing</strong>
             <p>Built real projects, practiced daily, and explored responsive design and modern JavaScript.</p>
           </li>
+
           <li>
             <span>2026</span>
             <strong>Leveling Up</strong>
@@ -146,27 +182,33 @@
 
       <section id="skills" class="skills">
         <h2>Skills</h2>
+
         <ul class="skill-list">
           <li>
             <img src="assets/icons/html.svg" alt="">
             <span>HTML</span>
           </li>
+
           <li>
             <img src="assets/icons/css.svg" alt="">
             <span>CSS</span>
           </li>
+
           <li>
             <img src="assets/icons/javascript.svg" alt="">
             <span>JavaScript</span>
           </li>
+
           <li>
             <img src="assets/icons/react.svg" alt="">
             <span>React</span>
           </li>
+
           <li>
             <img src="assets/icons/github.png" alt="">
             <span>GitHub</span>
           </li>
+
           <li>
             <img src="assets/icons/learn.svg" alt="">
             <span>More Coming Soon...</span>
@@ -189,6 +231,7 @@
             linkedin.com/in/andresyoung
           </a>
         </li>
+
         <li>
           <a href="https://github.com/frvrdre" target="_blank" rel="noopener noreferrer">
             <img class="contact-icon" src="assets/icons/github.png" alt="">

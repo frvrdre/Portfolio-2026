@@ -119,8 +119,12 @@ main > section,
 /* Buttons and hover styles */
 .site-nav a:hover,
 .project-link:hover,
-.contact-list a:hover {
-  color: var(--color-primary);
+.contact-list a:hover,
+.projects-button:hover,
+.nav-cta:hover, .github-button:hover  {
+ color: var(--color-muted);
+ transform: translateY(-2px); 
+ 
 }
 
 .nav-cta,
@@ -133,6 +137,8 @@ main > section,
   padding: 0 20px;
   border-radius: 8px;
   font-weight: 700;
+  color: var(--color-accent);
+ 
 }
 
 .nav-cta,
